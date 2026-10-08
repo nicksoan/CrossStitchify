@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CrossStitchify — image to stitch pattern</title>
+    <link rel="stylesheet" href="./styles.css">
+    <script type="module" src="./app.js"></script>
+  </head>
+  <body>
+    <main>
+      <header>
+        <p class="eyebrow">FROM PIXELS TO THREAD</p>
+        <h1>CrossStitchify</h1>
+        <p>Turn a favorite image into your next cross stitch project.</p>
+      </header>
+      <section class="panel" aria-labelledby="setup-heading">
+        <h2 id="setup-heading">1. Design your pattern</h2>
+        <form id="pattern-form">
+          <label class="upload">Choose an image
+            <input id="image" type="file" accept="image/png,image/jpeg,image/webp" required>
+            <small>PNG, JPEG, or WebP · up to 10 MB. Your image never leaves this device.</small>
+          </label>
+          <div class="controls">
+            <label>Grid width (stitches)
+              <input id="width" type="number" min="1" max="120" value="40" required>
+            </label>
+            <label>Grid height (stitches)
+              <input id="height" type="number" min="1" max="120" value="40" required>
+            </label>
+            <label>Maximum thread colors
+              <input id="colors" type="number" min="2" max="24" value="12" required>
+            </label>
+          </div>
+          <p class="hint">Each square is one full cross stitch. Images fit without stretching; unused space becomes white stitches. Larger grids preserve more detail.</p>
+          <button id="generate" type="submit">Create stitch pattern</button>
+          <p id="status" role="status" aria-live="polite"></p>
+        </form>
+      </section>
+      <section id="result" class="panel" hidden aria-labelledby="result-heading">
+        <h2 id="result-heading">2. Stitch your image</h2>
+        <p id="summary"></p>
+        <div class="chart-scroll">
+          <canvas id="chart" role="img" aria-label="Cross stitch chart. Each square shows a thread color and symbol; see the color key and text instructions below."></canvas>
+        </div>
+        <p class="hint">Rows run top to bottom, columns left to right. Bold lines mark every 10 stitches.</p>
+        <div class="downloads">
+          <button id="download-chart" type="button">Download chart (PNG)</button>
+          <button id="download-instructions" type="button">Download instructions (TXT)</button>
+        </div>
+        <h3>Thread color key</h3>
+        <p class="hint">Match these approximate colors to your own embroidery floss; these are not manufacturer thread codes.</p>
+        <ul id="legend"></ul>
+        <h3>Before you begin</h3>
+        <ol>
+          <li>Choose Aida fabric and embroidery floss matching the color key. Leave extra fabric around all sides for framing.</li>
+          <li>Find the center of the chart and your fabric to position the design. The row instructions count from the chart’s top-left corner.</li>
+          <li>Use two strands of floss on 14-count Aida. Make one X per square, keeping the top diagonal in the same direction.</li>
+          <li>Follow the chart symbols or row instructions below, changing thread at each color change. Secure thread ends on the back.</li>
+        </ol>
+        <details>
+          <summary>Row-by-row stitching instructions</summary>
+          <pre id="instructions"></pre>
+        </details>
+      </section>
+      <footer>Made for slow afternoons and colorful stitches.</footer>
+    </main>
+  </body>
+</html>

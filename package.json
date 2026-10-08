@@ -1,0 +1,13 @@
+{
+  "name": "crossstitchify",
+  "version": "1.0.0",
+  "description": "Turn images into cross stitch charts in your browser.",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "node --test"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
